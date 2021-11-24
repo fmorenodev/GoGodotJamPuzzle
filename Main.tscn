@@ -1,0 +1,136 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Main.gd" type="Script" id=1]
+[ext_resource path="res://Next_Shape_Panel.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Points_Panel.gd" type="Script" id=3]
+[ext_resource path="res://assets/inner_background.png" type="Texture" id=4]
+[ext_resource path="res://assets/background.png" type="Texture" id=5]
+[ext_resource path="res://assets/main_theme.tres" type="Theme" id=6]
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="PuzzleScreen" type="Node2D" parent="."]
+
+[node name="Background" type="NinePatchRect" parent="PuzzleScreen"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_right = 530.0
+margin_bottom = 720.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 5 )
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShapeZone" type="TextureRect" parent="PuzzleScreen/Background"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -320.0
+margin_right = 200.0
+margin_bottom = 320.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+margin_left = 530.0
+margin_right = 700.0
+margin_bottom = 718.0
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MiddleScreen" type="VBoxContainer" parent="PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 163.0
+margin_bottom = 711.0
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="NextShapePanel" parent="PanelContainer/MiddleScreen" instance=ExtResource( 2 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 156.0
+margin_bottom = 350.0
+size_flags_vertical = 3
+
+[node name="PointsPanel" type="VBoxContainer" parent="PanelContainer/MiddleScreen"]
+margin_top = 354.0
+margin_right = 156.0
+margin_bottom = 704.0
+size_flags_vertical = 3
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="RichTextLabel" parent="PanelContainer/MiddleScreen/PointsPanel"]
+margin_right = 156.0
+margin_bottom = 173.0
+size_flags_vertical = 3
+theme = ExtResource( 6 )
+text = "POINTS"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/MiddleScreen/PointsPanel"]
+margin_top = 177.0
+margin_right = 156.0
+margin_bottom = 350.0
+size_flags_vertical = 3
+theme = ExtResource( 6 )
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MinigameScreen" type="Node2D" parent="."]
+position = Vector2( 680, 0 )
+
+[node name="Background2" type="NinePatchRect" parent="MinigameScreen"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 20.0
+margin_right = 600.0
+margin_bottom = 720.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 5 )
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
