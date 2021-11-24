@@ -15,4 +15,4 @@ func _ready() -> void:
 	$Block4.position = Vector2(gl.block_size, -gl.block_size)
 
 func _init() -> void:
-	shape_color = Color.darkblue
+	shape_color = Color.dodgerblue

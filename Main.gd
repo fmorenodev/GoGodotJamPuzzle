@@ -7,7 +7,6 @@ onready var O_Shape = preload("res://shapes/O_Shape.tscn")
 onready var S_Shape = preload("res://shapes/S_Shape.tscn")
 onready var T_Shape = preload("res://shapes/T_Shape.tscn")
 onready var Z_Shape = preload("res://shapes/Z_Shape.tscn")
-onready var Next_Shape_Container = $PanelContainer/MiddleScreen/NextShapePanel/RichTextLabel2
 
 var shapes = []
 var current_shape
@@ -18,7 +17,7 @@ var next_num: int = 0
 func _ready() -> void:
 	var _err = gl.connect("set_active_block", self, "_on_set_active_block")
 	_err = $Timer.connect("timeout", self, "_on_Timer_timeout")
-	shapes = [I_Shape, J_Shape, L_Shape, O_Shape, S_Shape, T_Shape, Z_Shape]
+	shapes = [I_Shape, J_Shape, T_Shape, L_Shape, O_Shape, Z_Shape, S_Shape]
 	$Timer.wait_time = gl.tick_time
 	randomize()
 
@@ -29,7 +28,7 @@ func _on_Timer_timeout() -> void:
 		next_num = randi() % 7
 		current_shape = shapes[num].instance()
 		$PuzzleScreen/Background/ShapeZone.add_child(current_shape)
-		Next_Shape_Container.text = str(next_num)
+		$PanelContainer/MiddleScreen/NextShapePanel/Control/Sprite.frame = next_num
 		current_shape.position = gl.starting_position
 		active_block = true
 	else:
