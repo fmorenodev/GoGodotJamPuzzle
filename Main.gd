@@ -22,7 +22,7 @@ func _ready() -> void:
 	randomize()
 
 func _on_Timer_timeout() -> void:
-	$Timer.wait_time = gl.tick_time
+	# $Timer.wait_time = gl.tick_time
 	if not active_block:
 		num = randi() % 7 if num == -1 else next_num
 		next_num = randi() % 7
@@ -62,6 +62,13 @@ func _input(event: InputEvent) -> void:
 			current_shape.rotate_shape()
 		if event.is_action_pressed("ui_accept"):
 			hard_drop()
+		if event.is_action_pressed("ui_cancel"):
+			if !$Timer.is_stopped():
+				$Timer.stop()
+				$PopupPanel.show()
+			else:
+				$Timer.start()
+				$PopupPanel.hide()
 
 func _on_set_active_block(value: bool) -> void:
 	active_block = value

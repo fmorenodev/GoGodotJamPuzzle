@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Next_Shape_Panel.tscn" type="PackedScene" id=2]
@@ -8,42 +8,54 @@
 [ext_resource path="res://assets/main_theme.tres" type="Theme" id=6]
 [ext_resource path="res://assets/arrows.png" type="Texture" id=7]
 [ext_resource path="res://assets/power.png" type="Texture" id=8]
+[ext_resource path="res://assets/controls/space.png" type="Texture" id=9]
+[ext_resource path="res://assets/controls/d.png" type="Texture" id=10]
+[ext_resource path="res://assets/controls/a.png" type="Texture" id=11]
+[ext_resource path="res://assets/controls/w.png" type="Texture" id=12]
+[ext_resource path="res://assets/controls/s.png" type="Texture" id=13]
+[ext_resource path="res://assets/Extrude.ttf" type="DynamicFontData" id=14]
+[ext_resource path="res://assets/controls/background.png" type="Texture" id=15]
 
-[sub_resource type="AtlasTexture" id=6]
+[sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 7 )
 region = Rect2( 0, 0, 70, 40 )
 
-[sub_resource type="AtlasTexture" id=7]
+[sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 7 )
 region = Rect2( 70, 0, 70, 40 )
 
-[sub_resource type="AtlasTexture" id=8]
+[sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 7 )
 region = Rect2( 140, 0, 70, 40 )
 
-[sub_resource type="AtlasTexture" id=9]
+[sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 7 )
 region = Rect2( 210, 0, 70, 40 )
 
-[sub_resource type="AtlasTexture" id=10]
+[sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 7 )
 region = Rect2( 280, 0, 70, 40 )
 
-[sub_resource type="AtlasTexture" id=11]
+[sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 7 )
 region = Rect2( 350, 0, 70, 40 )
 
-[sub_resource type="AtlasTexture" id=12]
+[sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 7 )
 region = Rect2( 420, 0, 70, 40 )
 
-[sub_resource type="SpriteFrames" id=5]
+[sub_resource type="SpriteFrames" id=8]
 animations = [ {
-"frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
 "loop": true,
 "name": "arrows",
 "speed": 8.0
 } ]
+
+[sub_resource type="DynamicFont" id=9]
+size = 48
+use_mipmaps = true
+font_data = ExtResource( 14 )
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 1 )
@@ -84,7 +96,7 @@ __meta__ = {
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 margin_left = 514.0
-margin_right = 627.0
+margin_right = 665.0
 margin_bottom = 720.0
 size_flags_vertical = 3
 theme = ExtResource( 6 )
@@ -93,7 +105,7 @@ __meta__ = {
 }
 
 [node name="MiddleScreen" type="VBoxContainer" parent="PanelContainer"]
-margin_right = 113.0
+margin_right = 159.0
 margin_bottom = 720.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -106,19 +118,19 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 0.0
 margin_top = 0.0
-margin_right = 113.0
-margin_bottom = 214.0
+margin_right = 159.0
+margin_bottom = 213.0
 size_flags_vertical = 3
 
 [node name="Container2" type="CenterContainer" parent="PanelContainer/MiddleScreen"]
-margin_top = 218.0
-margin_right = 113.0
-margin_bottom = 283.0
+margin_top = 217.0
+margin_right = 159.0
+margin_bottom = 284.0
 
 [node name="Label" type="Label" parent="PanelContainer/MiddleScreen/Container2"]
-margin_left = 7.0
-margin_right = 105.0
-margin_bottom = 65.0
+margin_left = 27.0
+margin_right = 131.0
+margin_bottom = 67.0
 text = "POWER
 "
 __meta__ = {
@@ -126,30 +138,30 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="PanelContainer/MiddleScreen/Container2"]
-position = Vector2( 5, 33.6744 )
+position = Vector2( 23, 35.3562 )
 scale = Vector2( 3, 3 )
 texture = ExtResource( 8 )
 centered = false
 hframes = 2
 
 [node name="Container" type="CenterContainer" parent="PanelContainer/MiddleScreen"]
-margin_top = 287.0
-margin_right = 113.0
+margin_top = 288.0
+margin_right = 159.0
 margin_bottom = 501.0
 size_flags_vertical = 3
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="PanelContainer/MiddleScreen/Container"]
-position = Vector2( 5, 70 )
+position = Vector2( 23, 65.2378 )
 scale = Vector2( 1.5, 1.5 )
-frames = SubResource( 5 )
+frames = SubResource( 8 )
 animation = "arrows"
-frame = 3
+frame = 1
 playing = true
 centered = false
 
 [node name="PointsPanel" type="VBoxContainer" parent="PanelContainer/MiddleScreen"]
 margin_top = 505.0
-margin_right = 113.0
+margin_right = 159.0
 margin_bottom = 720.0
 size_flags_vertical = 3
 alignment = 1
@@ -159,40 +171,185 @@ __meta__ = {
 }
 
 [node name="Title" type="Label" parent="PanelContainer/MiddleScreen/PointsPanel"]
-margin_top = 74.0
-margin_right = 113.0
-margin_bottom = 105.0
+margin_top = 65.0
+margin_right = 159.0
+margin_bottom = 97.0
 theme = ExtResource( 6 )
 text = "POINTS"
 align = 1
 valign = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/MiddleScreen/PointsPanel"]
-margin_top = 109.0
-margin_right = 113.0
-margin_bottom = 141.0
+margin_top = 101.0
+margin_right = 159.0
+margin_bottom = 150.0
 theme = ExtResource( 6 )
 fit_content_height = true
 scroll_active = false
 
-[node name="MinigameScreen" type="Node2D" parent="."]
-position = Vector2( 680, 0 )
-
-[node name="Background2" type="NinePatchRect" parent="MinigameScreen"]
+[node name="PopupPanel" type="Popup" parent="."]
+visible = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -53.0
-margin_right = 602.0
-margin_bottom = 720.0
+margin_left = -296.0
+margin_top = -129.5
+margin_right = 354.0
+margin_bottom = 170.5
+rect_min_size = Vector2( 650, 225 )
+theme = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="NinePatchRect" type="NinePatchRect" parent="PopupPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture = ExtResource( 5 )
-patch_margin_left = 2
-patch_margin_top = 2
-patch_margin_right = 2
-patch_margin_bottom = 2
+texture = ExtResource( 15 )
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PopupPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="PopupPanel/VBoxContainer"]
+margin_right = 650.0
+margin_bottom = 48.0
+custom_fonts/font = SubResource( 9 )
+text = "GAME PAUSED"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Controls" type="Label" parent="PopupPanel/VBoxContainer"]
+margin_top = 52.0
+margin_right = 650.0
+margin_bottom = 84.0
+text = "CONTROLS"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HboxContainer" type="HBoxContainer" parent="PopupPanel/VBoxContainer"]
+margin_top = 88.0
+margin_right = 650.0
+margin_bottom = 300.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PopupPanel/VBoxContainer/HboxContainer"]
+margin_right = 201.0
+margin_bottom = 212.0
+rect_min_size = Vector2( 0, 100 )
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PopupPanel/VBoxContainer/HboxContainer/VBoxContainer"]
+margin_top = 50.0
+margin_right = 201.0
+margin_bottom = 90.0
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="PopupPanel/VBoxContainer/HboxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 36.0
+margin_right = 76.0
+margin_bottom = 40.0
+texture = ExtResource( 11 )
+
+[node name="TextureRect2" type="TextureRect" parent="PopupPanel/VBoxContainer/HboxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 80.0
+margin_right = 120.0
+margin_bottom = 40.0
+texture = ExtResource( 13 )
+
+[node name="TextureRect3" type="TextureRect" parent="PopupPanel/VBoxContainer/HboxContainer/VBoxContainer/HBoxContainer"]
+margin_left = 124.0
+margin_right = 164.0
+margin_bottom = 40.0
+texture = ExtResource( 10 )
+
+[node name="Label" type="Label" parent="PopupPanel/VBoxContainer/HboxContainer/VBoxContainer"]
+margin_top = 94.0
+margin_right = 201.0
+margin_bottom = 161.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Block
+Movement"
+align = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PopupPanel/VBoxContainer/HboxContainer"]
+margin_left = 205.0
+margin_right = 445.0
+margin_bottom = 212.0
+rect_min_size = Vector2( 0, 100 )
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="PopupPanel/VBoxContainer/HboxContainer/VBoxContainer2"]
+margin_top = 68.0
+margin_right = 240.0
+margin_bottom = 108.0
+texture = ExtResource( 9 )
+
+[node name="Label" type="Label" parent="PopupPanel/VBoxContainer/HboxContainer/VBoxContainer2"]
+margin_top = 112.0
+margin_right = 240.0
+margin_bottom = 144.0
+size_flags_vertical = 1
+text = "Hard Drop"
+align = 1
+valign = 2
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="PopupPanel/VBoxContainer/HboxContainer"]
+margin_left = 449.0
+margin_right = 650.0
+margin_bottom = 212.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Sprite" type="TextureRect" parent="PopupPanel/VBoxContainer/HboxContainer/VBoxContainer3"]
+margin_top = 50.0
+margin_right = 201.0
+margin_bottom = 90.0
+texture = ExtResource( 12 )
+stretch_mode = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="PopupPanel/VBoxContainer/HboxContainer/VBoxContainer3"]
+margin_top = 94.0
+margin_right = 201.0
+margin_bottom = 161.0
+text = "Rotate
+Piece"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }

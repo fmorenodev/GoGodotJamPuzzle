@@ -19,19 +19,20 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="."]
-margin_right = 72.0
-margin_bottom = 31.0
+margin_right = 76.0
+margin_bottom = 32.0
 size_flags_vertical = 1
 text = "NEXT"
 align = 1
 valign = 1
 
 [node name="Control" type="Control" parent="."]
-margin_top = 35.0
-margin_right = 72.0
-margin_bottom = 35.0
+margin_top = 36.0
+margin_right = 76.0
+margin_bottom = 36.0
 
 [node name="Sprite" type="Sprite" parent="Control"]
+position = Vector2( 10.3826, 1.88774 )
 texture = ExtResource( 2 )
 centered = false
 hframes = 7
