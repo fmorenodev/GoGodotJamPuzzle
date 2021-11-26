@@ -8,6 +8,9 @@ var rotation_matrix: Array = []
 var create_position: Vector2 = Vector2.ZERO
 var shape_color: Color
 
+func _ready() -> void:
+	var _err = gl.connect("blink", self, "blink")
+
 func draw_shape() -> void:
 	var i = 0
 	for child in get_children():
@@ -31,6 +34,8 @@ func rotate_shape() -> void:
 			rotation_position = rotation_position + 1 if rotation_position < 3 else 0
 
 func deact_shape() -> void:
+	if position == create_position:
+		var _err = get_tree().reload_current_scene()
 	gl.emit_signal("set_active_block", false)
 	for child in get_children():
 		child.deact_block()
@@ -55,11 +60,15 @@ func move_down() -> void:
 	if not is_fixed:
 		for child in get_children():
 			if not child.can_move_down():
+#				if create_position == position:
+#					gl.restart_game()
 				deact_shape()
-				if create_position == position:
-					gl.restart_game()
-				else:
-					gl.emit_signal("spawn_block")
+				gl.emit_signal("spawn_block")
 				is_fixed = true
 				return
 		position.y += gl.block_size
+
+func blink() -> void:
+	if randf() >= 0.5:
+		for child in get_children():
+			child.sprite.play("default")

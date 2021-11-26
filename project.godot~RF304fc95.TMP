@@ -64,7 +64,7 @@ _global_script_class_icons={
 
 config/name="Go Godot Jam Puzzle"
 run/main_scene="res://Main.tscn"
-config/icon="res://assets/Icon.png"
+config/icon="res://icon.png"
 
 [autoload]
 
