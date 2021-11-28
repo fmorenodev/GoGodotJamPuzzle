@@ -12,7 +12,7 @@
 [ext_resource path="res://assets/controls/a.png" type="Texture" id=11]
 [ext_resource path="res://assets/controls/w.png" type="Texture" id=12]
 [ext_resource path="res://assets/controls/s.png" type="Texture" id=13]
-[ext_resource path="res://assets/Extrude.ttf" type="DynamicFontData" id=14]
+[ext_resource path="res://assets/fonts/Extrude.ttf" type="DynamicFontData" id=14]
 [ext_resource path="res://assets/controls/background.png" type="Texture" id=15]
 
 [sub_resource type="DynamicFont" id=1]

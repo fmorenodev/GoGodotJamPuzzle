@@ -9,7 +9,7 @@ func _ready() -> void:
 		[Vector2(0, -gl.block_size), Vector2(0, 0), Vector2(0, gl.block_size), Vector2(0, gl.block_size * 2)],
 		[Vector2(-gl.block_size, 0), Vector2(0, 0), Vector2(gl.block_size, 0), Vector2(gl.block_size * 2, 0)]]
 	draw_shape()
-	
+
 	$Block.position = Vector2(0, -gl.block_size)
 	$Block3.position = Vector2(0, gl.block_size)
 	$Block4.position = Vector2(0, gl.block_size * 2)
