@@ -84,7 +84,7 @@ window/stretch/aspect="keep"
 
 [gui]
 
-theme/custom_font="res://assets/fonts/main_font.tres"
+theme/custom_font="res://assets/main_font.tres"
 
 [importer_defaults]
 
