@@ -14,7 +14,6 @@ func _ready() -> void:
 	_err = gl.connect("level_timeout", self, "_on_level_timeout")
 	gl.emit_signal("set_battery_max_value", gl.levels[gl.level - 1]["size"])
 	randomize()
-	spawn_block()
 	new_level()
 
 func new_level() -> void:
@@ -22,6 +21,7 @@ func new_level() -> void:
 		spawn_passive_block(randi() % 3)
 	gl.emit_signal("set_battery_max_value", gl.levels[gl.level - 1]["size"])
 	gl.emit_signal("restart_timer", gl.levels[gl.level - 1]["time"])
+	spawn_block()
 
 func spawn_block() -> void:
 	current_shape = Single_Shape.instance()
@@ -41,21 +41,38 @@ func spawn_passive_block(polarity: int) -> void:
 	gl.passive_positions.append(new_shape.position)
 
 func _on_level_completed() -> void:
-	gl.add_points(1000)
-	current_shape = null
-	gl.passive_positions.clear()
-	gl.passive_blocks.clear()
+	gl.add_points(1000 + round(int($RightPanel/SideScreen/TimePanel/RichTextLabel.bbcode_text)) * 20)
 	$ClearPopup.show()
 	gl.emit_signal("play_sound", gl.SFX.CLEAR)
 	yield(get_tree().create_timer(2), "timeout")
 	$ClearPopup.hide()
+	current_shape.queue_free()
+	gl.passive_positions.clear()
+	for block in gl.passive_blocks:
+		block.get_parent().queue_free()
+	gl.passive_blocks.clear()
 	gl.add_level()
 	new_level()
 
 func get_random_pos() -> Vector2:
-	return Vector2(round(rand_range(0, gl.columns - 1)) * gl.block_size, round(rand_range(0, gl.rows - 1)) * gl.block_size)
+	var pos = Vector2(round(rand_range(0, gl.columns - 1)) * gl.block_size, round(rand_range(0, gl.rows - 1)) * gl.block_size)
+	if gl.passive_positions.has(pos) or pos == gl.starting_position or is_adjacent(pos):
+		return get_random_pos()
+	else:
+		return pos
+
+func is_adjacent(pos: Vector2) -> bool:
+	var directions = [Vector2.RIGHT, Vector2.LEFT, Vector2.UP, Vector2.DOWN]
+	for dir in directions:
+		if gl.passive_positions.has(pos + (dir * gl.block_size)):
+			return true
+	return false
 
 func _on_level_timeout() -> void:
+	$GameOverPopup.show()
+	gl.emit_signal("play_sound", gl.SFX.GAME_OVER)
+	yield(get_tree().create_timer(2), "timeout")
+	$GameOverPopup.hide()
 	gl.restart_game()
 
 func move(direction: Vector2) -> void:
@@ -73,7 +90,7 @@ func _input(event: InputEvent) -> void:
 		if event.is_action_pressed("ui_up", true):
 			move(Vector2.UP)
 		if event.is_action_pressed("ui_accept"):
-			current_shape.deact_shape()
+			current_shape.drop_shape()
 			spawn_block()
 		if event.is_action_pressed("ui_cancel"):
 			if gl.paused:

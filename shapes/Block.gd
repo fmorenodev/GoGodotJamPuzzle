@@ -58,6 +58,7 @@ func join(direction: Vector2) -> void:
 		elif block.get_parent().position.y + block.position.y < this_pos_y: # up
 			adjust_position(block, Vector2(position.x, position.y - gl.block_size))
 	to_join = []
+	gl.emit_signal("play_sound", gl.SFX.JOIN)
 	var blocks_left = gl.levels[gl.level - 1]["size"] - get_parent().get_child_count()
 	blocks_left = blocks_left if blocks_left >= 0 else 0
 	gl.emit_signal("set_blocks_left", blocks_left)
@@ -69,7 +70,7 @@ func adjust_position(block: Node, new_pos: Vector2) -> void:
 	get_parent().add_child(block)
 	block.position = new_pos
 
-func deact_block() -> void:
+func drop_block() -> void:
 	if is_active:
 		get_parent().is_fixed = true
 		is_active = false

@@ -35,6 +35,7 @@ gl="*res://Global.gd"
 
 [debug]
 
+gdscript/warnings/narrowing_conversion=false
 gdscript/warnings/unused_signal=false
 gdscript/warnings/integer_division=false
 
