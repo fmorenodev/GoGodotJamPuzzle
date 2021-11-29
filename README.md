@@ -1,6 +1,20 @@
 # GoGodotJamPuzzle
 November 2021 GoGodotJam submission
 
-assets used:
+coding by true - https://truedev.itch.io/
+graphics by soybaby - https://soybaby.com/
+music/sfx by Dieck - https://soundcloud.com/julio-reyes-dieck/sets/film-and-videogame-music
 
-font: Extrude (http://www.pentacom.jp/pentacom/bitfontmaker2/gallery/?id=238)
+external assets used:
+
+font: SMW text by Jayvee Enaguas (https://www.dafont.com/smw-text-nc.font)
+
+to fix:
+ - no spawning in occupied spots
+ - no spawning or dropping piece on starting spots
+ - maybe no spawning adjacent to other pieces
+ 
+to make:
+ - title screen?
+ - game over and level clear
+ - level properties and particle numbers for each level

@@ -1,58 +1,48 @@
 extends Node
 
 signal spawn_block
-signal add_points
-signal add_lines
+signal set_points
 signal add_level
+signal set_blocks_left
+signal level_timeout
+signal level_completed
+signal restart_timer(time)
+signal play_timer(value)
 signal set_active_block(value)
+signal set_battery_max_value(max_value)
+signal play_sound(sfx)
+signal play_music(value)
 
 # game params
-var block_size: int = 40
-var rows: int = 16
-var columns: int = 10
+var block_size: int = 32
+var rows: int = 15
+var columns: int = 20
 var game_area: Vector2 = Vector2((columns - 1) * block_size, (rows - 1) * block_size)
 var starting_position: Vector2 = Vector2((columns - 1) / 2 * block_size, block_size)
+enum POLARITY {POSITIVE, NEGATIVE, NEUTRAL}
+enum SFX {MOVE, JOIN, REPEL, CLEAR, GAME_OVER}
 
-var deact_positions: Array = []
-var deact_blocks: Array = []
+var paused: bool = false
+var passive_positions: Array = []
+var passive_blocks: Array = []
 var points: int = 0
-var tick_time: float = 1
 var level: int = 1
-var lines: int = 0
-var combo_lines: int = 0
-var levels: PoolIntArray = [2000, 5000, 10000, 20000, 40000, 100000, 2000000]
+var levels: Array = [{"size": 5, "time": 80}, {"size": 10, "time": 60}, {"size": 15, "time": 40}]
+var particles: Array = [{"pos": 5}, {"neg": 5}, {"neu": 1}] # expand and use for particle distribution per level
 
 func add_points(added_points: int) -> void:
 	points += added_points
-	if points > levels[0] and tick_time > .3:
-		level += 1
-		emit_signal("add_level")
-		levels.remove(0)
-		tick_time -= -.1
-	emit_signal("add_points")
+	emit_signal("set_points")
 
-func add_lines() -> void:
-	if combo_lines != 0:
-		lines += combo_lines
-		var base_points = 0
-		if combo_lines == 1:
-			base_points = 100
-		elif combo_lines == 2:
-			base_points = 300
-		elif combo_lines == 3:
-			base_points = 500
-		elif combo_lines == 4:
-			base_points = 800
-		emit_signal("add_lines")
-		add_points(base_points * level)
+func add_level() -> void:
+	level += 1
+	emit_signal("add_level")
 
 func restart_game() -> void:
-	deact_positions.clear()
-	deact_blocks.clear()
-	tick_time = 1
+	passive_positions.clear()
+	passive_blocks.clear()
 	points = 0
-	lines = 0
 	level = 1
-	combo_lines = 0
-	levels = [2000, 5000, 10000, 20000, 40000, 100000, 2000000]
+	paused = false
+	emit_signal("restart_timer", levels[level]["time"])
 	var _err = get_tree().reload_current_scene()

@@ -15,56 +15,19 @@ _global_script_classes=[ {
 "path": "res://shapes/Basic_Shape.gd"
 }, {
 "base": "Basic_Shape",
-"class": "I_Shape",
+"class": "Single_Shape",
 "language": "GDScript",
-"path": "res://shapes/I_Shape.gd"
-}, {
-"base": "Basic_Shape",
-"class": "J_Shape",
-"language": "GDScript",
-"path": "res://shapes/J_Shape.gd"
-}, {
-"base": "Basic_Shape",
-"class": "L_Shape",
-"language": "GDScript",
-"path": "res://shapes/L_Shape.gd"
-}, {
-"base": "Basic_Shape",
-"class": "O_Shape",
-"language": "GDScript",
-"path": "res://shapes/O_Shape.gd"
-}, {
-"base": "Basic_Shape",
-"class": "S_Shape",
-"language": "GDScript",
-"path": "res://shapes/S_Shape.gd"
-}, {
-"base": "Basic_Shape",
-"class": "T_Shape",
-"language": "GDScript",
-"path": "res://shapes/T_Shape.gd"
-}, {
-"base": "Basic_Shape",
-"class": "Z_Shape",
-"language": "GDScript",
-"path": "res://shapes/Z_Shape.gd"
+"path": "res://shapes/Single_Shape.gd"
 } ]
 _global_script_class_icons={
 "Basic_Shape": "",
-"I_Shape": "",
-"J_Shape": "",
-"L_Shape": "",
-"O_Shape": "",
-"S_Shape": "",
-"T_Shape": "",
-"Z_Shape": ""
+"Single_Shape": ""
 }
 
 [application]
 
 config/name="Go Godot Jam Puzzle"
 run/main_scene="res://Main.tscn"
-config/icon="res://assets/Icon.png"
 
 [autoload]
 
@@ -81,10 +44,6 @@ window/size/width=1280
 window/size/height=720
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
-
-[gui]
-
-theme/custom_font="res://assets/main_font.tres"
 
 [importer_defaults]
 

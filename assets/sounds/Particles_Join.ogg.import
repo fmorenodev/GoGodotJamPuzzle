@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Particles_Join.ogg-f7d90c7838b6292b4aaa7ef0a58262a0.oggstr"
+
+[deps]
+
+source_file="res://assets/sounds/Particles_Join.ogg"
+dest_files=[ "res://.import/Particles_Join.ogg-f7d90c7838b6292b4aaa7ef0a58262a0.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
