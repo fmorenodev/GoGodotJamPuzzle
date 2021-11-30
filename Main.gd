@@ -15,6 +15,10 @@ func _ready() -> void:
 	gl.emit_signal("set_battery_max_value", gl.levels[gl.level - 1]["size"])
 	randomize()
 	new_level()
+	if gl.tutorial:
+		$PopupPanel.show()
+		gl.emit_signal("play_timer", false)
+		gl.paused = true
 
 func new_level() -> void:
 	for p in gl.particles[gl.level - 1]["pos"]:
@@ -32,6 +36,8 @@ func new_level() -> void:
 func spawn_block() -> void:
 	current_shape = Single_Shape.instance()
 	$PuzzleScreen/Exterior/ShapeZone.add_child(current_shape)
+	if gl.passive_positions.has(gl.starting_position):
+		gl.starting_position = get_random_pos()
 	current_shape.position = gl.starting_position
 	current_shape.get_child(0).sprite.frame = 3
 	yield(get_tree().create_timer(0.20), "timeout")
@@ -47,7 +53,7 @@ func spawn_passive_block(polarity: int) -> void:
 	gl.passive_positions.append(new_shape.position)
 
 func _on_level_completed() -> void:
-	gl.add_points(1000 + round(int($RightPanel/SideScreen/TimePanel/RichTextLabel.bbcode_text)) * 20)
+	gl.add_points(1000 * gl.level + round(int($RightPanel/SideScreen/TimePanel/RichTextLabel.bbcode_text)) * 20)
 	get_tree().get_root().set_disable_input(true)
 	$ClearPopup.show()
 	gl.emit_signal("play_sound", gl.SFX.CLEAR)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://screen/RightPanel.gd" type="Script" id=2]
@@ -20,22 +20,21 @@
 [ext_resource path="res://assets/SMW Text NC.ttf" type="DynamicFontData" id=21]
 [ext_resource path="res://assets/screen/checker_bg_full.png" type="Texture" id=22]
 
-[sub_resource type="DynamicFontData" id=1]
-font_path = "res://assets/Extrude.ttf"
+[sub_resource type="DynamicFont" id=1]
+size = 48
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+use_mipmaps = true
+font_data = ExtResource( 21 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 48
-use_mipmaps = true
-font_data = SubResource( 1 )
-
-[sub_resource type="DynamicFont" id=3]
 size = 48
 outline_size = 4
 outline_color = Color( 0, 0, 0, 1 )
 use_mipmaps = true
 font_data = ExtResource( 21 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=3]
 size = 48
 outline_size = 4
 outline_color = Color( 0, 0, 0, 1 )
@@ -322,14 +321,15 @@ texture = ExtResource( 8 )
 stretch_mode = 1
 
 [node name="PopupPanel" type="Popup" parent="."]
+visible = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -345.0
-margin_top = -293.5
-margin_right = 345.0
-margin_bottom = 293.5
+margin_left = -351.0
+margin_top = -336.0
+margin_right = 351.0
+margin_bottom = 336.0
 rect_min_size = Vector2( 650, 460 )
 theme = ExtResource( 6 )
 __meta__ = {
@@ -363,9 +363,9 @@ __meta__ = {
 }
 
 [node name="Title" type="Label" parent="PopupPanel/VBoxContainer"]
-margin_right = 690.0
-margin_bottom = 48.0
-custom_fonts/font = SubResource( 2 )
+margin_right = 702.0
+margin_bottom = 58.0
+custom_fonts/font = SubResource( 1 )
 text = "GAME PAUSED"
 align = 1
 valign = 1
@@ -374,9 +374,9 @@ __meta__ = {
 }
 
 [node name="Controls" type="Label" parent="PopupPanel/VBoxContainer"]
-margin_top = 52.0
-margin_right = 690.0
-margin_bottom = 81.0
+margin_top = 62.0
+margin_right = 702.0
+margin_bottom = 91.0
 text = "CONTROLS"
 align = 1
 valign = 1
@@ -385,29 +385,28 @@ __meta__ = {
 }
 
 [node name="HboxContainer" type="HBoxContainer" parent="PopupPanel/VBoxContainer"]
-margin_top = 85.0
-margin_right = 690.0
-margin_bottom = 211.0
+margin_top = 95.0
+margin_right = 702.0
+margin_bottom = 200.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PopupPanel/VBoxContainer/HboxContainer"]
-margin_right = 343.0
-margin_bottom = 126.0
+margin_right = 349.0
+margin_bottom = 105.0
 rect_min_size = Vector2( 0, 100 )
 size_flags_horizontal = 3
 alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PopupPanel/VBoxContainer/HboxContainer/VBoxContainer"]
-margin_top = 26.0
-margin_right = 343.0
-margin_bottom = 66.0
+margin_right = 349.0
+margin_bottom = 40.0
 alignment = 1
 
 [node name="TextureRect4" type="TextureRect" parent="PopupPanel/VBoxContainer/HboxContainer/VBoxContainer/HBoxContainer"]
-margin_left = 85.0
-margin_right = 125.0
+margin_left = 88.0
+margin_right = 128.0
 margin_bottom = 40.0
 texture = ExtResource( 12 )
 stretch_mode = 4
@@ -416,54 +415,55 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="PopupPanel/VBoxContainer/HboxContainer/VBoxContainer/HBoxContainer"]
-margin_left = 129.0
-margin_right = 169.0
+margin_left = 132.0
+margin_right = 172.0
 margin_bottom = 40.0
 texture = ExtResource( 11 )
 
 [node name="TextureRect2" type="TextureRect" parent="PopupPanel/VBoxContainer/HboxContainer/VBoxContainer/HBoxContainer"]
-margin_left = 173.0
-margin_right = 213.0
+margin_left = 176.0
+margin_right = 216.0
 margin_bottom = 40.0
 texture = ExtResource( 13 )
 
 [node name="TextureRect3" type="TextureRect" parent="PopupPanel/VBoxContainer/HboxContainer/VBoxContainer/HBoxContainer"]
-margin_left = 217.0
-margin_right = 257.0
+margin_left = 220.0
+margin_right = 260.0
 margin_bottom = 40.0
 texture = ExtResource( 10 )
 
 [node name="Label" type="Label" parent="PopupPanel/VBoxContainer/HboxContainer/VBoxContainer"]
-margin_top = 70.0
-margin_right = 343.0
-margin_bottom = 99.0
+margin_top = 44.0
+margin_right = 349.0
+margin_bottom = 105.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
-text = "MOVE PARTICLE"
+text = "MOVE PARTICLE
+(HOLD TO MOVE FASTER)"
 align = 1
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="PopupPanel/VBoxContainer/HboxContainer"]
-margin_left = 347.0
-margin_right = 690.0
-margin_bottom = 126.0
+margin_left = 353.0
+margin_right = 702.0
+margin_bottom = 105.0
 rect_min_size = Vector2( 0, 100 )
 size_flags_horizontal = 3
 alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="PopupPanel/VBoxContainer/HboxContainer/VBoxContainer2"]
-margin_left = 51.0
-margin_top = 26.0
-margin_right = 291.0
-margin_bottom = 66.0
+margin_left = 54.0
+margin_right = 294.0
+margin_bottom = 40.0
 size_flags_horizontal = 6
 texture = ExtResource( 9 )
 
 [node name="Label" type="Label" parent="PopupPanel/VBoxContainer/HboxContainer/VBoxContainer2"]
-margin_top = 70.0
-margin_right = 343.0
-margin_bottom = 99.0
+margin_top = 44.0
+margin_right = 349.0
+margin_bottom = 105.0
 size_flags_vertical = 1
-text = "PLACE PARTICLE"
+text = "PLACE PARTICLE
+AND GET A NEW ONE"
 align = 1
 valign = 2
 autowrap = true
@@ -472,14 +472,17 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PopupPanel/VBoxContainer"]
-margin_top = 215.0
-margin_right = 690.0
-margin_bottom = 567.0
+margin_top = 204.0
+margin_right = 702.0
+margin_bottom = 652.0
 
 [node name="Title" type="Label" parent="PopupPanel/VBoxContainer/VBoxContainer"]
-margin_right = 690.0
-margin_bottom = 61.0
-text = "HOW TO PLAY
+margin_right = 702.0
+margin_bottom = 157.0
+text = "
+ESC TO PAUSE THE GAME OR CLOSE THIS
+
+HOW TO PLAY
 "
 align = 1
 valign = 1
@@ -488,9 +491,9 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PopupPanel/VBoxContainer/VBoxContainer"]
-margin_top = 65.0
-margin_right = 690.0
-margin_bottom = 352.0
+margin_top = 161.0
+margin_right = 702.0
+margin_bottom = 448.0
 size_flags_vertical = 3
 alignment = 1
 __meta__ = {
@@ -498,7 +501,7 @@ __meta__ = {
 }
 
 [node name="Title" type="Label" parent="PopupPanel/VBoxContainer/VBoxContainer/VBoxContainer"]
-margin_right = 690.0
+margin_right = 702.0
 margin_bottom = 253.0
 theme = ExtResource( 6 )
 text = "GATHER PARTICLES IN CLUSTERS AND
@@ -514,7 +517,7 @@ valign = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="PopupPanel/VBoxContainer/VBoxContainer/VBoxContainer"]
 margin_top = 257.0
-margin_right = 690.0
+margin_right = 702.0
 margin_bottom = 287.0
 theme = ExtResource( 6 )
 bbcode_enabled = true
@@ -522,10 +525,11 @@ fit_content_height = true
 scroll_active = false
 
 [node name="ClearPopup" type="Popup" parent="."]
-margin_left = 472.347
-margin_top = 293.5
-margin_right = 472.347
-margin_bottom = 293.5
+visible = true
+margin_left = 455.866
+margin_top = 313.5
+margin_right = 455.866
+margin_bottom = 313.5
 theme = ExtResource( 6 )
 __meta__ = {
 "_edit_group_": true,
@@ -547,7 +551,7 @@ __meta__ = {
 margin_right = 399.0
 margin_bottom = 58.0
 size_flags_vertical = 6
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 2 )
 text = "LEVEL CLEAR!"
 align = 1
 valign = 1
@@ -556,10 +560,11 @@ __meta__ = {
 }
 
 [node name="GameOverPopup" type="Popup" parent="."]
-margin_left = 510.433
-margin_top = 293.5
-margin_right = 510.433
-margin_bottom = 293.5
+visible = true
+margin_left = 492.453
+margin_top = 313.5
+margin_right = 492.453
+margin_bottom = 313.5
 theme = ExtResource( 6 )
 __meta__ = {
 "_edit_group_": true,
@@ -581,7 +586,7 @@ __meta__ = {
 margin_right = 328.0
 margin_bottom = 58.0
 size_flags_vertical = 6
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 3 )
 text = "GAME OVER!"
 align = 1
 valign = 1

@@ -19,15 +19,12 @@ func play_sound(sfx: int) -> void:
 			sfx_player_1.stream = movement_sfx
 			sfx_player_1.play()
 		gl.SFX.JOIN:
-			sfx_player_2.volume_db = -15
 			sfx_player_2.stream = join_sfx
 			sfx_player_2.play()
 		gl.SFX.REPEL:
-			sfx_player_2.volume_db = -5
 			sfx_player_2.stream = repel_sfx
 			sfx_player_2.play()
 		gl.SFX.CLEAR:
-			sfx_player_2.volume_db = -5
 			sfx_player_2.stream = clear_sfx
 			sfx_player_2.play()
 		gl.SFX.GAME_OVER:

@@ -13,6 +13,7 @@ signal set_battery_max_value(max_value)
 signal play_sound(sfx)
 
 # game params
+var tutorial: bool = true
 var block_size: int = 32
 var rows: int = 15
 var columns: int = 20
@@ -47,4 +48,5 @@ func restart_game() -> void:
 	level = 1
 	paused = false
 	emit_signal("restart_timer", levels[level]["time"])
+	starting_position = Vector2((columns - 1) / 2 * block_size, block_size)
 	var _err = get_tree().reload_current_scene()

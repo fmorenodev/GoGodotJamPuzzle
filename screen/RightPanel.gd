@@ -13,12 +13,12 @@ func _ready() -> void:
 	_err = gl.connect("restart_timer", self, "restart_timer")
 	_err = timer.connect("timeout", self, "on_timer_timeout")
 	_err = gl.connect("play_timer", self, "play_timer")
-	$LevelPanel/RichTextLabel.bbcode_text = "[center]{0}[/center]".format([str(gl.level)])
+	$LevelPanel/RichTextLabel.bbcode_text = str(gl.level)
 	for child in $BatteriesContainer.get_children():
 		child.texture = battery_empty
 
 func add_level() -> void:
-	$LevelPanel/RichTextLabel.bbcode_text = "[center]{0}[/center]".format([str(gl.level)])
+	$LevelPanel/RichTextLabel.bbcode_text = str(gl.level)
 	$BatteriesContainer.get_children()[current_battery].texture = battery_full
 	current_battery += 1
 
