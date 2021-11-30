@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/full_battery.png-40f79aff5d221667a5cbf5a8e05a9dc4.stex"
+path="res://.import/meter_empty.png-f902da55ebdb0ac9b89963270f9d34b1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/screen/full_battery.png"
-dest_files=[ "res://.import/full_battery.png-40f79aff5d221667a5cbf5a8e05a9dc4.stex" ]
+source_file="res://assets/screen/meter_empty.png"
+dest_files=[ "res://.import/meter_empty.png-f902da55ebdb0ac9b89963270f9d34b1.stex" ]
 
 [params]
 
