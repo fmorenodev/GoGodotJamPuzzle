@@ -1,8 +1,8 @@
 extends VBoxContainer
 
 onready var timer: Timer = $TimePanel/LevelTimer
-onready var full_battery: Texture = preload("res://assets/screen/full_battery.png")
-onready var empty_battery: Texture = preload("res://assets/screen/empty_battery.png")
+onready var battery_full: Texture = preload("res://assets/screen/battery_full.png")
+onready var battery_empty: Texture = preload("res://assets/screen/battery_empty.png")
 var current_battery: int = 0
 
 func _process(_delta) -> void:
@@ -14,11 +14,11 @@ func _ready() -> void:
 	_err = timer.connect("timeout", self, "on_timer_timeout")
 	$LevelPanel/RichTextLabel.bbcode_text = "[center]{0}[/center]".format([str(gl.level)])
 	for child in $BatteriesContainer.get_children():
-		child.texture = empty_battery
+		child.texture = battery_empty
 
 func add_level() -> void:
 	$LevelPanel/RichTextLabel.bbcode_text = "[center]{0}[/center]".format([str(gl.level)])
-	$BatteriesContainer.get_children()[current_battery].texture = full_battery
+	$BatteriesContainer.get_children()[current_battery].texture = battery_full
 
 func restart_timer(time: int) -> void:
 	timer.stop()

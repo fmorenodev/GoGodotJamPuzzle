@@ -25,7 +25,7 @@ func new_level() -> void:
 
 func spawn_block() -> void:
 	current_shape = Single_Shape.instance()
-	$PuzzleScreen/Background/Exterior/ShapeZone.add_child(current_shape)
+	$PuzzleScreen/Exterior/ShapeZone.add_child(current_shape)
 	current_shape.position = gl.starting_position
 	current_shape.get_child(0).sprite.frame = 3
 	yield(get_tree().create_timer(0.20), "timeout")
@@ -34,7 +34,7 @@ func spawn_block() -> void:
 
 func spawn_passive_block(polarity: int) -> void:
 	var new_shape = Single_Shape.instance()
-	$PuzzleScreen/Background/Exterior/ShapeZone.add_child(new_shape)
+	$PuzzleScreen/Exterior/ShapeZone.add_child(new_shape)
 	new_shape.get_child(0).add_polarity(polarity)
 	new_shape.position = get_random_pos()
 	gl.passive_blocks.append(new_shape.get_child(0))

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/full_meter.png-28186d155fc23a009585500a22fb92ea.stex"
+path="res://.import/checker_bg_full.png-5a4c1e33405f8879b45ed5cf1c10ef82.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/screen/full_meter.png"
-dest_files=[ "res://.import/full_meter.png-28186d155fc23a009585500a22fb92ea.stex" ]
+source_file="res://assets/screen/checker_bg_full.png"
+dest_files=[ "res://.import/checker_bg_full.png-5a4c1e33405f8879b45ed5cf1c10ef82.stex" ]
 
 [params]
 
