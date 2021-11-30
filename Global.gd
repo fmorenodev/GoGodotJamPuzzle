@@ -11,7 +11,6 @@ signal play_timer(value)
 signal set_active_block(value)
 signal set_battery_max_value(max_value)
 signal play_sound(sfx)
-signal play_music(value)
 
 # game params
 var block_size: int = 32
@@ -29,7 +28,9 @@ var points: int = 0
 var level: int = 1
 var levels: Array = [{"size": 10, "time": 60}, {"size": 10, "time": 50}, {"size": 10, "time": 40},
 	{"size": 15, "time": 40}, {"size": 15, "time": 30}, {"size": 10, "time": 20}, {"size": 15, "time": 20}]
-var particles: Array = [{"pos": 5}, {"neg": 5}, {"neu": 1}] #TODO
+var particles: Array = [{"pos": 10, "neg": 5, "neu": 0}, {"pos": 7, "neg": 8, "neu": 0},
+	{"pos": 5, "neg": 5, "neu": 5}, {"pos": 7, "neg": 8, "neu": 5}, {"pos": 6, "neg": 10, "neu": 8},
+	{"pos": 5, "neg": 5, "neu": 10}, {"pos": 10, "neg": 7, "neu": 10}]
 
 func add_points(added_points: int) -> void:
 	points += added_points

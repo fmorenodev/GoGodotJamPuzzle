@@ -37,7 +37,11 @@ func is_repelled(direction: Vector2) -> bool:
 				(polarity == gl.POLARITY.POSITIVE and block.polarity == gl.POLARITY.POSITIVE):
 				gl.emit_signal("play_sound", gl.SFX.REPEL)
 				return true
-			elif (polarity == gl.POLARITY.NEGATIVE and block.polarity == gl.POLARITY.POSITIVE) or \
+	
+	for i in possible_indexes:
+		if i != -1:
+			var block = gl.passive_blocks[i]
+			if (polarity == gl.POLARITY.NEGATIVE and block.polarity == gl.POLARITY.POSITIVE) or \
 				(polarity == gl.POLARITY.POSITIVE and block.polarity == gl.POLARITY.NEGATIVE):
 				to_join.append(block)
 	return false
@@ -45,18 +49,19 @@ func is_repelled(direction: Vector2) -> bool:
 func join(direction: Vector2) -> void:
 	if to_join == []: return
 	for block in to_join:
-		gl.passive_blocks.erase(block)
-		gl.passive_positions.erase(block.get_parent().position + block.position)
-		var this_pos_x = get_parent().position.x + position.x + (direction.x * gl.block_size)
-		var this_pos_y = get_parent().position.y + position.y + (direction.y * gl.block_size)
-		if block.get_parent().position.x + block.position.x > this_pos_x: # right
-			adjust_position(block, Vector2(position.x + gl.block_size, position.y))
-		elif block.get_parent().position.x + block.position.x < this_pos_x: # left
-			adjust_position(block, Vector2(position.x - gl.block_size, position.y))
-		elif block.get_parent().position.y + block.position.y > this_pos_y: # down
-			adjust_position(block, Vector2(position.x, position.y + gl.block_size))
-		elif block.get_parent().position.y + block.position.y < this_pos_y: # up
-			adjust_position(block, Vector2(position.x, position.y - gl.block_size))
+		if gl.passive_blocks.has(block):
+			gl.passive_blocks.erase(block)
+			gl.passive_positions.erase(block.get_parent().position + block.position)
+			var this_pos_x = get_parent().position.x + position.x + (direction.x * gl.block_size)
+			var this_pos_y = get_parent().position.y + position.y + (direction.y * gl.block_size)
+			if block.get_parent().position.x + block.position.x > this_pos_x: # right
+				adjust_position(block, Vector2(position.x + gl.block_size, position.y))
+			elif block.get_parent().position.x + block.position.x < this_pos_x: # left
+				adjust_position(block, Vector2(position.x - gl.block_size, position.y))
+			elif block.get_parent().position.y + block.position.y > this_pos_y: # down
+				adjust_position(block, Vector2(position.x, position.y + gl.block_size))
+			elif block.get_parent().position.y + block.position.y < this_pos_y: # up
+				adjust_position(block, Vector2(position.x, position.y - gl.block_size))
 	to_join = []
 	gl.emit_signal("play_sound", gl.SFX.JOIN)
 	var blocks_left = gl.levels[gl.level - 1]["size"] - get_parent().get_child_count()

@@ -17,11 +17,17 @@ func _ready() -> void:
 	new_level()
 
 func new_level() -> void:
-	for i in 20:
-		spawn_passive_block(randi() % 3)
+	for p in gl.particles[gl.level - 1]["pos"]:
+		spawn_passive_block(gl.POLARITY.POSITIVE)
+	for p in gl.particles[gl.level - 1]["neg"]:
+		spawn_passive_block(gl.POLARITY.NEGATIVE)
+	for p in gl.particles[gl.level - 1]["neu"]:
+		spawn_passive_block(gl.POLARITY.NEUTRAL)
 	gl.emit_signal("set_battery_max_value", gl.levels[gl.level - 1]["size"])
 	gl.emit_signal("restart_timer", gl.levels[gl.level - 1]["time"])
 	spawn_block()
+	get_tree().get_root().set_disable_input(false)
+	gl.emit_signal("play_timer", true)
 
 func spawn_block() -> void:
 	current_shape = Single_Shape.instance()
@@ -42,8 +48,10 @@ func spawn_passive_block(polarity: int) -> void:
 
 func _on_level_completed() -> void:
 	gl.add_points(1000 + round(int($RightPanel/SideScreen/TimePanel/RichTextLabel.bbcode_text)) * 20)
+	get_tree().get_root().set_disable_input(true)
 	$ClearPopup.show()
 	gl.emit_signal("play_sound", gl.SFX.CLEAR)
+	gl.emit_signal("play_timer", false)
 	yield(get_tree().create_timer(2), "timeout")
 	$ClearPopup.hide()
 	current_shape.queue_free()
@@ -70,6 +78,8 @@ func is_adjacent(pos: Vector2) -> bool:
 
 func _on_level_timeout() -> void:
 	$GameOverPopup.show()
+	get_tree().get_root().set_disable_input(true)
+	gl.emit_signal("play_timer", false)
 	gl.emit_signal("play_sound", gl.SFX.GAME_OVER)
 	yield(get_tree().create_timer(2), "timeout")
 	$GameOverPopup.hide()
@@ -103,6 +113,3 @@ func _input(event: InputEvent) -> void:
 
 func _on_set_active_block(value: bool) -> void:
 	active_block = value
-
-func play_music(value: bool) -> void:
-	var _err = $MusicPlayer.play() if value else $MusicPlayer.stop()
