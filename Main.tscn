@@ -195,6 +195,9 @@ rect_min_size = Vector2( 640, 480 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="RightPanel" type="PanelContainer" parent="."]
 margin_left = 1000.0
@@ -338,13 +341,14 @@ texture = ExtResource( 8 )
 stretch_mode = 1
 
 [node name="PopupPanel" type="Popup" parent="."]
+visible = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -325.0
+margin_left = -345.0
 margin_top = -293.5
-margin_right = 325.0
+margin_right = 345.0
 margin_bottom = 293.5
 rect_min_size = Vector2( 650, 460 )
 theme = ExtResource( 6 )
@@ -379,7 +383,7 @@ __meta__ = {
 }
 
 [node name="Title" type="Label" parent="PopupPanel/VBoxContainer"]
-margin_right = 650.0
+margin_right = 690.0
 margin_bottom = 48.0
 custom_fonts/font = SubResource( 2 )
 text = "GAME PAUSED"
@@ -391,7 +395,7 @@ __meta__ = {
 
 [node name="Controls" type="Label" parent="PopupPanel/VBoxContainer"]
 margin_top = 52.0
-margin_right = 650.0
+margin_right = 690.0
 margin_bottom = 81.0
 text = "CONTROLS"
 align = 1
@@ -402,14 +406,14 @@ __meta__ = {
 
 [node name="HboxContainer" type="HBoxContainer" parent="PopupPanel/VBoxContainer"]
 margin_top = 85.0
-margin_right = 650.0
+margin_right = 690.0
 margin_bottom = 211.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PopupPanel/VBoxContainer/HboxContainer"]
-margin_right = 323.0
+margin_right = 343.0
 margin_bottom = 126.0
 rect_min_size = Vector2( 0, 100 )
 size_flags_horizontal = 3
@@ -417,13 +421,13 @@ alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PopupPanel/VBoxContainer/HboxContainer/VBoxContainer"]
 margin_top = 26.0
-margin_right = 323.0
+margin_right = 343.0
 margin_bottom = 66.0
 alignment = 1
 
 [node name="TextureRect4" type="TextureRect" parent="PopupPanel/VBoxContainer/HboxContainer/VBoxContainer/HBoxContainer"]
-margin_left = 75.0
-margin_right = 115.0
+margin_left = 85.0
+margin_right = 125.0
 margin_bottom = 40.0
 texture = ExtResource( 12 )
 stretch_mode = 4
@@ -432,54 +436,54 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="PopupPanel/VBoxContainer/HboxContainer/VBoxContainer/HBoxContainer"]
-margin_left = 119.0
-margin_right = 159.0
+margin_left = 129.0
+margin_right = 169.0
 margin_bottom = 40.0
 texture = ExtResource( 11 )
 
 [node name="TextureRect2" type="TextureRect" parent="PopupPanel/VBoxContainer/HboxContainer/VBoxContainer/HBoxContainer"]
-margin_left = 163.0
-margin_right = 203.0
+margin_left = 173.0
+margin_right = 213.0
 margin_bottom = 40.0
 texture = ExtResource( 13 )
 
 [node name="TextureRect3" type="TextureRect" parent="PopupPanel/VBoxContainer/HboxContainer/VBoxContainer/HBoxContainer"]
-margin_left = 207.0
-margin_right = 247.0
+margin_left = 217.0
+margin_right = 257.0
 margin_bottom = 40.0
 texture = ExtResource( 10 )
 
 [node name="Label" type="Label" parent="PopupPanel/VBoxContainer/HboxContainer/VBoxContainer"]
 margin_top = 70.0
-margin_right = 323.0
+margin_right = 343.0
 margin_bottom = 99.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
-text = "MOVE CLUSTER"
+text = "MOVE PARTICLE"
 align = 1
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="PopupPanel/VBoxContainer/HboxContainer"]
-margin_left = 327.0
-margin_right = 650.0
+margin_left = 347.0
+margin_right = 690.0
 margin_bottom = 126.0
 rect_min_size = Vector2( 0, 100 )
 size_flags_horizontal = 3
 alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="PopupPanel/VBoxContainer/HboxContainer/VBoxContainer2"]
-margin_left = 41.0
+margin_left = 51.0
 margin_top = 26.0
-margin_right = 281.0
+margin_right = 291.0
 margin_bottom = 66.0
 size_flags_horizontal = 6
 texture = ExtResource( 9 )
 
 [node name="Label" type="Label" parent="PopupPanel/VBoxContainer/HboxContainer/VBoxContainer2"]
 margin_top = 70.0
-margin_right = 323.0
+margin_right = 343.0
 margin_bottom = 99.0
 size_flags_vertical = 1
-text = "PLACE CLUSTER"
+text = "PLACE PARTICLE"
 align = 1
 valign = 2
 autowrap = true
@@ -489,11 +493,11 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PopupPanel/VBoxContainer"]
 margin_top = 215.0
-margin_right = 650.0
+margin_right = 690.0
 margin_bottom = 567.0
 
 [node name="Title" type="Label" parent="PopupPanel/VBoxContainer/VBoxContainer"]
-margin_right = 650.0
+margin_right = 690.0
 margin_bottom = 61.0
 text = "HOW TO PLAY
 "
@@ -505,7 +509,7 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PopupPanel/VBoxContainer/VBoxContainer"]
 margin_top = 65.0
-margin_right = 650.0
+margin_right = 690.0
 margin_bottom = 352.0
 size_flags_vertical = 3
 alignment = 1
@@ -514,7 +518,7 @@ __meta__ = {
 }
 
 [node name="Title" type="Label" parent="PopupPanel/VBoxContainer/VBoxContainer/VBoxContainer"]
-margin_right = 650.0
+margin_right = 690.0
 margin_bottom = 253.0
 theme = ExtResource( 6 )
 text = "GATHER PARTICLES IN CLUSTERS AND
@@ -522,7 +526,7 @@ MAKE A CLUSTER BIG ENOUGH TO
 PASS TO THE NEXT LEVEL
 
 OPPOSITES ATTRACT
-SAME BLOCKS REPEL
+SAME PARTICLES REPEL
 
 IT'S A RACE AGAINST THE CLOCK"
 align = 1
@@ -530,7 +534,7 @@ valign = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="PopupPanel/VBoxContainer/VBoxContainer/VBoxContainer"]
 margin_top = 257.0
-margin_right = 650.0
+margin_right = 690.0
 margin_bottom = 287.0
 theme = ExtResource( 6 )
 bbcode_enabled = true
