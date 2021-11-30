@@ -19,6 +19,7 @@ func _ready() -> void:
 func add_level() -> void:
 	$LevelPanel/RichTextLabel.bbcode_text = "[center]{0}[/center]".format([str(gl.level)])
 	$BatteriesContainer.get_children()[current_battery].texture = battery_full
+	current_battery += 1
 
 func restart_timer(time: int) -> void:
 	timer.stop()

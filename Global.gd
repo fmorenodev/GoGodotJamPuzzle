@@ -27,8 +27,9 @@ var passive_positions: Array = []
 var passive_blocks: Array = []
 var points: int = 0
 var level: int = 1
-var levels: Array = [{"size": 5, "time": 80}, {"size": 10, "time": 60}, {"size": 15, "time": 40}]
-var particles: Array = [{"pos": 5}, {"neg": 5}, {"neu": 1}] # expand and use for particle distribution per level
+var levels: Array = [{"size": 10, "time": 60}, {"size": 10, "time": 50}, {"size": 10, "time": 40},
+	{"size": 15, "time": 40}, {"size": 15, "time": 30}, {"size": 10, "time": 20}, {"size": 15, "time": 20}]
+var particles: Array = [{"pos": 5}, {"neg": 5}, {"neu": 1}] #TODO
 
 func add_points(added_points: int) -> void:
 	points += added_points
