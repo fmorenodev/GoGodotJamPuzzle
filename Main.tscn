@@ -125,7 +125,6 @@ rect_min_size = Vector2( 42, 138 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 max_value = 10.0
-step = 1.0
 value = 10.0
 rounded = true
 texture_under = ExtResource( 5 )
