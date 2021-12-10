@@ -15,6 +15,8 @@ func move(dir: Vector2) -> void:
 	if not is_fixed:
 		for child in get_children():
 			if not child.can_move(dir):
+				for c in get_children():
+					c.to_join = []
 				return
 		for child in get_children():
 			child.join(dir)

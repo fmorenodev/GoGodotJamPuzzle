@@ -9,12 +9,8 @@ external assets used:
 
 font: SMW text by Jayvee Enaguas (https://www.dafont.com/smw-text-nc.font)
 
-to fix:
- - no spawning in occupied spots
- - no spawning or dropping piece on starting spots
- - maybe no spawning adjacent to other pieces
- 
-to make:
- - title screen?
- - game over and level clear
- - level properties and particle numbers for each level
+to fix after the jam:
+ - add wasd controls to the game and the controls popup
+ - fix cluster drop (disable input until particle spawns)
+ - fix particles not being included in passive particles
+ - add animations?
