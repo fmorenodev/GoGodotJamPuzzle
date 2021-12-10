@@ -14,11 +14,13 @@ signal play_sound(sfx)
 
 # game params
 var tutorial: bool = true
+var movement_disabled: bool = false
 var block_size: int = 32
 var rows: int = 15
 var columns: int = 20
 var game_area: Vector2 = Vector2((columns - 1) * block_size, (rows - 1) * block_size)
 var starting_position: Vector2 = Vector2((columns - 1) / 2 * block_size, block_size)
+var max_level: int = 7
 enum POLARITY {POSITIVE, NEGATIVE, NEUTRAL}
 enum SFX {MOVE, JOIN, REPEL, CLEAR, GAME_OVER}
 
@@ -31,14 +33,15 @@ var levels: Array = [{"size": 10, "time": 60}, {"size": 10, "time": 50}, {"size"
 	{"size": 15, "time": 40}, {"size": 15, "time": 30}, {"size": 10, "time": 20}, {"size": 15, "time": 20}]
 var particles: Array = [{"pos": 10, "neg": 5, "neu": 0}, {"pos": 7, "neg": 8, "neu": 0},
 	{"pos": 5, "neg": 5, "neu": 5}, {"pos": 7, "neg": 8, "neu": 5}, {"pos": 6, "neg": 10, "neu": 8},
-	{"pos": 5, "neg": 5, "neu": 10}, {"pos": 10, "neg": 7, "neu": 10}]
+	{"pos": 5, "neg": 5, "neu": 10}, {"pos": 13, "neg": 7, "neu": 7}]
 
 func add_points(added_points: int) -> void:
 	points += added_points
 	emit_signal("set_points")
 
 func add_level() -> void:
-	level += 1
+	if level < max_level:
+		level += 1
 	emit_signal("add_level")
 
 func restart_game() -> void:
@@ -47,6 +50,7 @@ func restart_game() -> void:
 	points = 0
 	level = 1
 	paused = false
+	movement_disabled = false
 	emit_signal("restart_timer", levels[level]["time"])
 	starting_position = Vector2((columns - 1) / 2 * block_size, block_size)
 	var _err = get_tree().reload_current_scene()

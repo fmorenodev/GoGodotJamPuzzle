@@ -31,4 +31,6 @@ func on_timer_timeout() -> void:
 	gl.emit_signal("level_timeout")
 
 func play_timer(value: bool) -> void:
+	gl.paused = !value
+	gl.movement_disabled = !value
 	timer.set_paused(!value)

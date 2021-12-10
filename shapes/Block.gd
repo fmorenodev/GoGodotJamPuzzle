@@ -52,6 +52,7 @@ func join(direction: Vector2) -> void:
 		if gl.passive_blocks.has(block):
 			gl.passive_blocks.erase(block)
 			gl.passive_positions.erase(block.get_parent().position + block.position)
+			block.is_active = true
 			var this_pos_x = get_parent().position.x + position.x + (direction.x * gl.block_size)
 			var this_pos_y = get_parent().position.y + position.y + (direction.y * gl.block_size)
 			if block.get_parent().position.x + block.position.x > this_pos_x: # right

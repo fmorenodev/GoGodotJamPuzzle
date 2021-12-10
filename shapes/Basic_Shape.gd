@@ -10,6 +10,7 @@ func drop_shape() -> void:
 	gl.emit_signal("set_active_block", false)
 	for child in get_children():
 		child.drop_block()
+	gl.emit_signal("set_blocks_left", gl.levels[gl.level - 1]["size"] - 1)
 
 func move(dir: Vector2) -> void:
 	if not is_fixed:

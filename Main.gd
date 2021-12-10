@@ -18,7 +18,7 @@ func _ready() -> void:
 	if gl.tutorial:
 		$PopupPanel.show()
 		gl.emit_signal("play_timer", false)
-		gl.paused = true
+		gl.tutorial = false
 
 func new_level() -> void:
 	for p in gl.particles[gl.level - 1]["pos"]:
@@ -28,8 +28,9 @@ func new_level() -> void:
 	for p in gl.particles[gl.level - 1]["neu"]:
 		spawn_passive_block(gl.POLARITY.NEUTRAL)
 	gl.emit_signal("set_battery_max_value", gl.levels[gl.level - 1]["size"])
-	gl.emit_signal("restart_timer", gl.levels[gl.level - 1]["time"])
+	gl.emit_signal("set_blocks_left", gl.levels[gl.level - 1]["size"] - 1)
 	spawn_block()
+	gl.emit_signal("restart_timer", gl.levels[gl.level - 1]["time"])
 	get_tree().get_root().set_disable_input(false)
 	gl.emit_signal("play_timer", true)
 
@@ -40,8 +41,10 @@ func spawn_block() -> void:
 		gl.starting_position = get_random_pos()
 	current_shape.position = gl.starting_position
 	current_shape.get_child(0).sprite.frame = 3
-	yield(get_tree().create_timer(0.20), "timeout")
+	get_tree().get_root().set_disable_input(true)
+	yield(get_tree().create_timer(1), "timeout")
 	current_shape.get_child(0).add_polarity(gl.POLARITY.NEGATIVE)
+	get_tree().get_root().set_disable_input(false)
 	active_block = true
 
 func spawn_passive_block(polarity: int) -> void:
@@ -97,17 +100,18 @@ func move(direction: Vector2) -> void:
 
 func _input(event: InputEvent) -> void:
 	if current_shape:
-		if event.is_action_pressed("ui_right", true):
-			move(Vector2.RIGHT)
-		if event.is_action_pressed("ui_left", true):
-			move(Vector2.LEFT)
-		if event.is_action_pressed("ui_down", true):
-			move(Vector2.DOWN)
-		if event.is_action_pressed("ui_up", true):
-			move(Vector2.UP)
-		if event.is_action_pressed("ui_accept"):
-			current_shape.drop_shape()
-			spawn_block()
+		if !gl.movement_disabled:
+			if event.is_action_pressed("ui_right", true):
+				move(Vector2.RIGHT)
+			if event.is_action_pressed("ui_left", true):
+				move(Vector2.LEFT)
+			if event.is_action_pressed("ui_down", true):
+				move(Vector2.DOWN)
+			if event.is_action_pressed("ui_up", true):
+				move(Vector2.UP)
+			if event.is_action_pressed("ui_accept"):
+				current_shape.drop_shape()
+				spawn_block()
 		if event.is_action_pressed("ui_cancel"):
 			if gl.paused:
 				gl.emit_signal("play_timer", true)
@@ -115,7 +119,6 @@ func _input(event: InputEvent) -> void:
 			else:
 				gl.emit_signal("play_timer", false)
 				$PopupPanel.show()
-			gl.paused = !gl.paused
 
 func _on_set_active_block(value: bool) -> void:
 	active_block = value
