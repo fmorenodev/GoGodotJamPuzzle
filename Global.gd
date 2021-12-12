@@ -22,7 +22,7 @@ var game_area: Vector2 = Vector2((columns - 1) * block_size, (rows - 1) * block_
 var starting_position: Vector2 = Vector2((columns - 1) / 2 * block_size, block_size)
 var max_level: int = 7
 enum POLARITY {POSITIVE, NEGATIVE, NEUTRAL}
-enum SFX {MOVE, JOIN, REPEL, CLEAR, GAME_OVER}
+enum SFX {MOVE, JOIN, REPEL, SPAWN, CLEAR, GAME_OVER}
 
 var paused: bool = false
 var passive_positions: Array = []

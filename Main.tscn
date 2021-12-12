@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://screen/RightPanel.gd" type="Script" id=2]
@@ -24,6 +24,7 @@
 [ext_resource path="res://assets/screen/checker_bg_full.png" type="Texture" id=22]
 [ext_resource path="res://assets/controls/left.png" type="Texture" id=23]
 [ext_resource path="res://assets/controls/up.png" type="Texture" id=24]
+[ext_resource path="res://assets/screen/meter_background.png" type="Texture" id=25]
 
 [sub_resource type="DynamicFont" id=1]
 size = 48
@@ -116,16 +117,34 @@ custom_constants/margin_top = 1
 custom_constants/margin_left = 56
 custom_constants/margin_bottom = 1
 
-[node name="TextureProgress" type="TextureProgress" parent="LeftPanel/SideScreen/MarginContainer"]
+[node name="TextureRect" type="TextureRect" parent="LeftPanel/SideScreen/MarginContainer"]
 margin_left = 56.0
 margin_top = 1.0
 margin_right = 224.0
 margin_bottom = 553.0
+texture = ExtResource( 25 )
+expand = true
+
+[node name="MarginContainer" type="MarginContainer" parent="LeftPanel/SideScreen/MarginContainer"]
+margin_left = 56.0
+margin_top = 1.0
+margin_right = 224.0
+margin_bottom = 553.0
+custom_constants/margin_right = 48
+custom_constants/margin_top = 56
+custom_constants/margin_left = 48
+custom_constants/margin_bottom = 56
+
+[node name="TextureProgress" type="TextureProgress" parent="LeftPanel/SideScreen/MarginContainer/MarginContainer"]
+margin_left = 48.0
+margin_top = 56.0
+margin_right = 120.0
+margin_bottom = 496.0
 rect_min_size = Vector2( 42, 138 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
 max_value = 10.0
-value = 10.0
+value = 1.0
 rounded = true
 texture_under = ExtResource( 5 )
 texture_progress = ExtResource( 18 )

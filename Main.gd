@@ -42,7 +42,8 @@ func spawn_block() -> void:
 	current_shape.position = gl.starting_position
 	current_shape.get_child(0).sprite.frame = 3
 	get_tree().get_root().set_disable_input(true)
-	yield(get_tree().create_timer(1), "timeout")
+	gl.emit_signal("play_sound", gl.SFX.SPAWN)
+	yield(get_tree().create_timer(0.7), "timeout")
 	current_shape.get_child(0).add_polarity(gl.POLARITY.NEGATIVE)
 	get_tree().get_root().set_disable_input(false)
 	active_block = true

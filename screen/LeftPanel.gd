@@ -1,6 +1,6 @@
 extends VBoxContainer
 
-onready var meter = $MarginContainer/TextureProgress
+onready var meter = $MarginContainer/MarginContainer/TextureProgress
 
 func _ready() -> void:
 	$ParticlesPanel/RichTextLabel.bbcode_text = "[center]{0}[/center]".format([str(gl.levels[gl.level - 1]["size"])])
