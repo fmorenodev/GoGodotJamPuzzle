@@ -18,7 +18,4 @@ to fix after the jam:
  - disable input on pause > FIXED
  - loop level 7 > FIXED
  - update blocks left and battery progress when dropping blocks > FIXED
- - battery progress bar not showing anything on 1 but showing full bar on 9
- 
-to improve after the jam:
- - add animations
+ - battery progress bar not showing anything on 1 but showing full bar on 9 > FIXED
